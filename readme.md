@@ -104,11 +104,6 @@ Type: `Function`
 
 Function to call when `Down` is pressed, where first argument is a value of the input.
 
-### onCtrlSpace
-
-Type: `Function`
-
-Function to call when `Ctrl+Space` is pressed, where first argument is a value of the input.
 
 ## Uncontrolled usage
 

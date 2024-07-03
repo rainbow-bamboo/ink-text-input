@@ -46,11 +46,6 @@ export type Props = {
 	readonly onSubmit?: (value: string) => void;
 
 	/**
-	 * Function to call when `Ctrl+Space` is pressed.
-	 */
-    	readonly onCtrlSpace?: (value: string) => void;
-
-	/**
 	 * Function to call when `Up` is pressed.
 	 */
 	readonly onUp?: (value: string) => void;
@@ -71,8 +66,7 @@ function TextInput({
 	onChange,
 	onSubmit,
 	onUp,
-	onDown,
-	onCtrlSpace
+	onDown
 }: Props) {
 	const [state, setState] = useState({
 		cursorOffset: (originalValue || '').length,
@@ -162,13 +156,6 @@ function TextInput({
 				}
 				return
         		   }
-
-        		if((key.ctrl && input === ' ')){
-            			if(onCtrlSpace){
-                			onCtrlSpace(originalValue);
-            			}
-				return
-       	                }
 
 			let nextCursorOffset = cursorOffset;
 			let nextValue = originalValue;
