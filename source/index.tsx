@@ -70,6 +70,9 @@ function TextInput({
 	showCursor = true,
 	onChange,
 	onSubmit,
+	onUp,
+	onDown,
+	onCtrlSpace
 }: Props) {
 	const [state, setState] = useState({
 		cursorOffset: (originalValue || '').length,
