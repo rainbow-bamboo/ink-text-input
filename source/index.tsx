@@ -163,7 +163,7 @@ function TextInput({
 				return
         		   }
 
-        		if((key.ctrl && input === ' ')){
+        		if((key.ctrl && ((input === ' ') || input === '`'))){
             			if(onCtrlSpace){
                 			onCtrlSpace(originalValue);
             			}
