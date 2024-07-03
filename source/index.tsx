@@ -148,21 +148,21 @@ function TextInput({
 
 			if (key.upArrow){
 				if (onUp) {
-					onUp()
+					onUp(originalValue)
 				}
 				return
                         }
 
                        if (key.downArrow){
 				if (onDown){
-            				onDown()
+            				onDown(originalValue)
 				}
 				return
         		   }
 
         		if((key.ctrl && input === ' ')){
             			if(onCtrlSpace){
-                			onCtrlSpace();
+                			onCtrlSpace(originalValue);
             			}
 				return
        	                }
