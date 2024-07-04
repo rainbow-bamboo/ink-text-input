@@ -110,7 +110,7 @@ function TextInput({
 	const cursorActualWidth = highlightPastedText ? cursorWidth : 0;
 
 	const value = mask ? mask.repeat(originalValue.length) : originalValue;
-	let renderedValue = (!showCursor && focus && customBookEnd) ? value + customCursor : value;
+	let renderedValue = (!showCursor && focus && customBookEnd) ? value + customBookEnd : value;
 	let renderedPlaceholder = placeholder ? chalk.grey(placeholder) : undefined;
 
 	// Fake mouse cursor, because it's too inconvenient to deal with actual cursor and ansi escapes
