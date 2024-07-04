@@ -26,6 +26,12 @@ export type Props = {
 	readonly showCursor?: boolean; // eslint-disable-line react/boolean-prop-naming
 
 	/**
+	 * String to show at the end of the input when in focus
+	 * showCursor must be set to false for this to take effect
+	 */
+    	readonly customBookEnd?: (value: string) => void;
+
+	/**
 	 * Highlight pasted text
 	 */
 	readonly highlightPastedText?: boolean; // eslint-disable-line react/boolean-prop-naming
@@ -72,7 +78,8 @@ function TextInput({
 	onSubmit,
 	onUp,
 	onDown,
-	onCtrlSpace
+	onCtrlSpace,
+	customBookEnd
 }: Props) {
 	const [state, setState] = useState({
 		cursorOffset: (originalValue || '').length,
@@ -103,7 +110,7 @@ function TextInput({
 	const cursorActualWidth = highlightPastedText ? cursorWidth : 0;
 
 	const value = mask ? mask.repeat(originalValue.length) : originalValue;
-	let renderedValue = value;
+	let renderedValue = (!showCursor && focus && customBookEnd) ? value + customCursor : value;
 	let renderedPlaceholder = placeholder ? chalk.grey(placeholder) : undefined;
 
 	// Fake mouse cursor, because it's too inconvenient to deal with actual cursor and ansi escapes
