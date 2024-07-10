@@ -26,9 +26,14 @@ export type Props = {
 	readonly showCursor?: boolean; // eslint-disable-line react/boolean-prop-naming
 
 	/**
-	 * Whether to enable backspace
+	 * Custom backspace function
 	 */
-	readonly enableBackspace?: boolean;
+	readonly onBackspace?: string;
+
+	/**
+	 * Whether to allow changing the input
+	 */
+	readonly allowChange?: string;
 
 	/**
 	 * String to show at the end of the input when in focus
@@ -85,7 +90,8 @@ function TextInput({
 	onDown,
 	onCtrlSpace,
 	customBookEnd,
-	enableBackspace
+	onBackspace = false,
+	allowChange = true
 }: Props) {
 	const [state, setState] = useState({
 		cursorOffset: (originalValue || '').length,
@@ -195,15 +201,17 @@ function TextInput({
 				if (showCursor) {
 					nextCursorOffset++;
 				}
-			} else if ((key.backspace || key.delete) && enableBackspace) {
+			} else if ((key.backspace || key.delete) && onBackspace) {
+				onBackspace(originalValue);
+			}
+			else if ((key.backspace || key.delete) && !onBackspace) {
 				if (cursorOffset > 0) {
 					nextValue =
 						originalValue.slice(0, cursorOffset - 1) +
 						originalValue.slice(cursorOffset, originalValue.length);
-
 					nextCursorOffset--;
 				}
-			} else {
+			} else if (allowChange) {
 				nextValue =
 					originalValue.slice(0, cursorOffset) +
 					input +
