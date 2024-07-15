@@ -213,10 +213,7 @@ function TextInput({
 				}
 			} else if (allowChange) {
 				nextValue =
-					originalValue.slice(0, cursorOffset) +
-					input +
-					originalValue.slice(cursorOffset, originalValue.length);
-
+					originalValue + input; // make it so it always adds to the end
 				nextCursorOffset += input.length;
 
 				if (input.length > 1) {
