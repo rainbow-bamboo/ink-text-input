@@ -33,7 +33,7 @@ export type Props = {
 	/**
 	 * Whether to allow changing the input
 	 */
-	readonly allowChange?: string;
+	readonly allowChange?: boolean;
 
 	/**
 	 * String to show at the end of the input when in focus
