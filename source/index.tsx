@@ -26,11 +26,6 @@ export type Props = {
 	readonly showCursor?: boolean; // eslint-disable-line react/boolean-prop-naming
 
 	/**
-	 * Custom backspace function
-	 */
-	readonly onBackspace?: string;
-
-	/**
 	 * Whether to allow changing the input
 	 */
 	readonly allowChange?: boolean;
@@ -65,6 +60,11 @@ export type Props = {
 	 * Function to call when `Ctrl+Space` is pressed.
 	 */
     	readonly onCtrlSpace?: (value: string) => void;
+
+	/**
+	 * Custom backspace function
+	 */
+	readonly onBackspace?: (value: string) => void;
 
 	/**
 	 * Function to call when `Up` is pressed.
