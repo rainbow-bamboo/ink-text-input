@@ -90,7 +90,7 @@ function TextInput({
 	onDown,
 	onCtrlSpace,
 	customBookEnd,
-	onBackspace = false,
+	onBackspace,
 	allowChange = true
 }: Props) {
 	const [state, setState] = useState({
